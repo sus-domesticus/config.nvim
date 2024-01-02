@@ -1,7 +1,13 @@
 local M = {}
 
 function M:setup()
-    vim.keymap.set("n", "<leader>[t", vim.cmd.TroubleToggle);
+    local wk = require("which-key")
+    wk.register({
+        ["<leader>["] = {
+            name = "+diagnostic",
+            t = { vim.cmd.TroubleToggle, "Toggle diagnostic window" }
+        }
+    })
 end
 
 return M

@@ -37,9 +37,8 @@ return {
         build = "cd app && yarn install",
         init = function()
             vim.g.mkdp_filetypes = { "markdown" }
-            vim.g.mkdp_auto_start = 1
-            vim.g.mkdp_auto_stop = 1
-            vim.g.mkdp_browser = "/usr/bin/brave-browser-stable"
+            vim.g.mkdp_echo_preview_url = 1
+            vim.g.mkdp_browser = "/usr/bin/firefox"
         end,
         ft = { "markdown" },
     },
@@ -78,13 +77,9 @@ return {
             "TmuxNavigateRight",
             "TmuxNavigatePrevious",
         },
-        keys = {
-            { "<c-h>",  "<cmd><C-U>TmuxNavigateLeft<cr>" },
-            { "<c-j>",  "<cmd><C-U>TmuxNavigateDown<cr>" },
-            { "<c-k>",  "<cmd><C-U>TmuxNavigateUp<cr>" },
-            { "<c-l>",  "<cmd><C-U>TmuxNavigateRight<cr>" },
-            { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
-        }
+        config = function()
+            require("susdomesticus.plugin_configs.vim-tmux-navigator").setup {}
+        end
     },
     {
 
@@ -105,9 +100,15 @@ return {
     },
     {
         "folke/which-key.nvim",
+        event = "VeryLazy",
+        init = function()
+            vim.o.timeout = true
+            vim.o.timeoutlen = 300
+        end,
         config = function()
             require("susdomesticus.plugin_configs.which-key").setup {}
-        end
+        end,
+        opts = {}
     },
     {
         "folke/tokyonight.nvim",

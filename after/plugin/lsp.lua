@@ -32,17 +32,25 @@ cmp.setup({
 })
 
 lsp.on_attach(function(client, bufnr)
-    local opts = { buffer = bufnr, remap = false }
-    vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
-    vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
-    vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
-    vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
-    vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
-    vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
-    vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
-    vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
-    vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
-    vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+    local opts = { buffer = bufnr }
+    local wk = require("which-key")
+    wk.register({
+        ["gd"] = { function() vim.lsp.buf.definition() end, "Go to definition" },
+        ["K"] = { function() vim.lsp.buf.hover() end, "Hover" },
+        ["[d"] = { function() vim.diagnostic.goto_next() end, "Go to next diagnostic" },
+        ["]d"] = { function() vim.diagnostic.goto_prev() end, "Go to prev diagnostic" },
+        ["<leader>v"] = {
+            name = "+view_code",
+            ["ws"] = { function() vim.lsp.buf.workspace_symbol() end, "View workspace symbols" },
+            ["d"] = { function() vim.diagnostic.open_float() end, "View diagnostic" },
+            ["ca"] = { function() vim.lsp.buf.code_action() end, "View code actions" },
+            ["rr"] = { function() vim.lsp.buf.references() end, "View references" },
+            ["rn"] = { function() vim.lsp.buf.rename() end, "Rename symbol" }
+        }
+    }, opts)
+    wk.register({
+        ["<C-h>"] = { function() vim.lsp.buf.signature_help() end, "Signature help" }
+    }, { mode = "i", buffer = bufnr })
 end)
 
 lsp.setup()
@@ -53,7 +61,7 @@ vim.diagnostic.config({
 
 require("mason").setup()
 require("mason-lspconfig").setup {
-    ensure_installed = { "lua_ls", "bashls", "rust_analyzer", "clangd", "pyright" }
+    ensure_installed = { "lua_ls", "bashls", "rust_analyzer", "clangd", "pyright", "phpactor" }
 }
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -63,3 +71,4 @@ lspconfig.bashls.setup { capabilities = capabilities }
 lspconfig.rust_analyzer.setup { capabilities = capabilities }
 lspconfig.clangd.setup { capabilities = capabilities }
 lspconfig.pyright.setup { capabilities = capabilities }
+lspconfig.phpactor.setup { capabilities = capabilities }

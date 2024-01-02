@@ -1,7 +1,10 @@
 local M = {}
 
 function M:setup()
-    vim.keymap.set("n", "<leader><F5>", vim.cmd.UndotreeToggle)
+    local wk = require("which-key")
+    wk.register({
+        ["<leader><F5>"] = { vim.cmd.UndotreeToggle, "Undo tree" }
+    })
 end
 
 return M
