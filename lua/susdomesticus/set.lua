@@ -1,3 +1,5 @@
+vim.g.mapleader = " "
+
 vim.opt.guicursor = ""
 
 vim.opt.number = true
@@ -27,3 +29,35 @@ vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
+
+local augroup_basic = vim.api.nvim_create_augroup("Basic", {})
+vim.api.nvim_create_autocmd("BufEnter", {
+    group = augroup_basic,
+    pattern = { "Makefile" },
+    callback = function ()
+        vim.opt_local.tabstop = 2
+        vim.opt_local.softtabstop = 2
+        vim.opt_local.shiftwidth = 2
+        vim.opt_local.expandtab = false
+    end
+})
+
+vim.api.nvim_create_autocmd("BufEnter", {
+    group = augroup_basic,
+    pattern = { "~/.config/nvim/**/*.lua" },
+    callback = function ()
+        vim.opt_local.tabstop = 2
+        vim.opt_local.softtabstop = 2
+        vim.opt_local.shiftwidth = 2
+    end
+})
+
+vim.api.nvim_create_autocmd("BufEnter", {
+    group = augroup_basic,
+    pattern = { "*.ly" },
+    callback = function ()
+        vim.opt_local.tabstop = 2
+        vim.opt_local.softtabstop = 2
+        vim.opt_local.shiftwidth = 2
+    end
+})

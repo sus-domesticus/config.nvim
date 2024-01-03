@@ -1,7 +1,3 @@
-require("neodev").setup({
-    library = { plugins = { "nvim-dap-ui" }, types = true }
-})
-
 local lsp = require("lsp-zero")
 lsp.preset("recommended")
 
@@ -10,9 +6,9 @@ local cmp_action = lsp.cmp_action()
 
 cmp.setup({
     snippet = {
-      expand = function(args)
-          require("luasnip").lsp_expand(args.body)
-      end,
+        expand = function(args)
+            require("luasnip").lsp_expand(args.body)
+        end,
     },
     window = {
         completion = cmp.config.window.bordered(),
@@ -26,8 +22,8 @@ cmp.setup({
         ["<C-d>"] = cmp.mapping.scroll_docs(4),
     }),
     sources = {
-      { name = "nvim_lsp" },
-      { name = "luasnip" }
+        { name = "nvim_lsp" },
+        { name = "luasnip" }
     }
 })
 
@@ -62,6 +58,19 @@ vim.diagnostic.config({
 require("mason").setup()
 require("mason-lspconfig").setup {
     ensure_installed = { "lua_ls", "bashls", "rust_analyzer", "clangd", "pyright", "phpactor" }
+}
+
+
+require("neodev").setup {
+    library = {
+        plugins = {
+                "nvim-dap-ui",
+                "nvim-treesitter",
+                "plenary.nvim",
+                "telescope.nvim"
+            },
+            types = true
+    }
 }
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()

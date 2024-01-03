@@ -1,5 +1,29 @@
 return {
     {
+        "rcarriga/nvim-dap-ui",
+        dependencies = {
+            "mfussenegger/nvim-dap"
+        },
+        config = function()
+            require("dapui").setup {}
+        end
+    },
+    {
+        "mfussenegger/nvim-dap"
+    },
+    {
+        "folke/neodev.nvim",
+        opts = {}
+    },
+    {
+        "kylechui/nvim-surround",
+        version = "*",
+        event = "VeryLazy",
+        config = function()
+            require("nvim-surround").setup {}
+        end
+    },
+    {
         "numToStr/Comment.nvim",
         opts = {
 
@@ -18,10 +42,6 @@ return {
                 multiline = true
             }
         end
-    },
-    {
-        "folke/neodev.nvim",
-        opts = {}
     },
     {
         "folke/trouble.nvim",
