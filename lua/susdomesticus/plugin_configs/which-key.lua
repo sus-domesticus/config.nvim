@@ -18,13 +18,45 @@ function M:setup()
 
     vim.keymap.set("x", "<leader>p", "_dP")
 
-    vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
+    vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
     vim.keymap.set("n", "<leader>Y", [["+Y]])
 
-    vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
+    vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
     vim.keymap.set("n", "Q", "<nop>")
     vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+
+    local augroup_wk_basic = vim.api.nvim_create_augroup("WhichKeyBasic", {})
+    vim.api.nvim_create_autocmd("BufEnter", {
+        group = augroup_wk_basic,
+        pattern = { "*.ly" },
+        callback = function(ev)
+            wk.register({
+                ["<leader>l"] = {
+                    name = "+lilypond",
+                    y = {
+                        name = "+lilypond",
+                        p = {
+                            function()
+                                vim.cmd("silent cd ..")
+                                vim.cmd("silent make prev")
+                                vim.cmd("silent cd src")
+                            end,
+                            "Lilypond Preview"
+                        },
+                        b = {
+                            function()
+                                vim.cmd("silent cd ..")
+                                vim.cmd("silent make")
+                                vim.cmd("silent cd src")
+                            end,
+                            "Lilypond Build"
+                        }
+                    }
+                }
+            }, { buffer = ev.buf })
+        end
+    })
 end
 
 return M
