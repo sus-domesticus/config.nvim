@@ -1,6 +1,7 @@
 require("lazy").setup({
 	"tpope/vim-fugitive",
 	"tpope/vim-sleuth",
+	"nvim-treesitter/nvim-treesitter-context",
 	{ "numToStr/Comment.nvim", opts = {} },
 	require("plugins/nvim-lint"),
 	require("plugins/vim-tmux-navigator"),
