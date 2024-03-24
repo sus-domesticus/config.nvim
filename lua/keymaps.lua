@@ -1,12 +1,13 @@
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 vim.keymap.set({ "n", "v" }, "-", '"_')
-vim.keymap.set("n", "<c-d>", "<c-d>zz")
-vim.keymap.set("n", "<c-u>", "<c-u>zz")
-vim.keymap.set("n", "<c-f>", "<c-f>zz")
-vim.keymap.set("n", "<c-b>", "<c-b>zz")
+vim.keymap.set("n", "<c-d>", "<c-d>zvzz")
+vim.keymap.set("n", "<c-u>", "<c-u>zvzz")
+vim.keymap.set("n", "<c-f>", "<c-f>zvzz")
+vim.keymap.set("n", "<c-b>", "<c-b>zvzz")
+
 vim.keymap.set("n", "J", function()
 	local save_cursor = vim.fn.getcurpos()
-	for _ = 1, vim.v.count do
+	for _ = 1, math.max(1, vim.v.count) do
 		vim.cmd.join()
 		vim.fn.setpos(".", save_cursor)
 	end
@@ -23,7 +24,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
 	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
 	callback = function()
-		vim.highlight.on_yank()
+		vim.highlight.on_yank({ timeout = 300 })
 	end,
 })
 
