@@ -5,6 +5,7 @@ return {
 			python = { "ruff" },
 			c = { "cpplint" },
 			cpp = { "cpplint" },
+			ts = { "ts-standard" },
 		}
 		vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 			group = vim.api.nvim_create_augroup("lint-buf-write-post", { clear = true }),

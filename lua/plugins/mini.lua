@@ -6,8 +6,6 @@ return {
 
 			require("mini.surround").setup()
 
-			require("mini.animate").setup()
-
 			require("mini.pairs").setup()
 
 			require("mini.move").setup()
