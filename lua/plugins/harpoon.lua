@@ -41,10 +41,10 @@ local function harpoonKeymaps(harpoon)
 		harpoon:list():select(4)
 	end, { desc = "Select harpoon window 4" })
 
-	vim.keymap.set("n", "<leader>k", function()
+	vim.keymap.set("n", "<leader>j", function()
 		harpoon:list():prev()
 	end, { desc = "Select prev harpoon window" })
-	vim.keymap.set("n", "<leader>j", function()
+	vim.keymap.set("n", "<leader>k", function()
 		harpoon:list():next()
 	end, { desc = "Select next harpoon window" })
 end
