@@ -13,7 +13,13 @@ return {
 				hijack_netrw_behavior = "open_current",
 			},
 		})
-		vim.keymap.set("n", "<leader>t", "<cmd>Neotree filesystem reveal right<cr>", { desc = "Neo[t]ree" })
+		vim.keymap.set("n", "<leader>nt", "<cmd>Neotree filesystem reveal right<cr>", { desc = "[N]eo[t]ree" })
+		vim.keymap.set(
+			"n",
+			"<leader>ne",
+			"<cmd>Neotree filesystem reveal current %:h:p<cr>",
+			{ desc = "[N]eotree [e]xplore" }
+		)
 	end,
 }
 
