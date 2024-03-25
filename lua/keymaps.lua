@@ -2,8 +2,6 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 vim.keymap.set({ "n", "v" }, "-", '"_')
 vim.keymap.set("n", "<c-d>", "<c-d>zvzz")
 vim.keymap.set("n", "<c-u>", "<c-u>zvzz")
-vim.keymap.set("n", "<c-f>", "<c-f>zvzz")
-vim.keymap.set("n", "<c-b>", "<c-b>zvzz")
 
 vim.keymap.set("n", "J", function()
 	local save_cursor = vim.fn.getcurpos()
