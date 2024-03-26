@@ -36,7 +36,10 @@ return {
 
 					map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
 
-					map("K", vim.lsp.buf.hover, "Hover Documentation")
+					map("K", function()
+						vim.lsp.buf.hover()
+						vim.lsp.buf.hover()
+					end, "Hover Documentation")
 
 					map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
