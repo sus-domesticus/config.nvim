@@ -34,4 +34,9 @@ vim.opt.scrolloff = 10
 
 vim.opt.hlsearch = true
 
+vim.opt.foldcolumn = "1"
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 99
+vim.opt.foldenable = true
+
 -- vim: ts=2 sts=2 sw=2 et
