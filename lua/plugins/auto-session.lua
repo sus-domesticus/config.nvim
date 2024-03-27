@@ -19,8 +19,8 @@ return {
 		},
 		pre_save_cmds = { closeNeotree },
 	},
-	config = function(opts)
-		require("auto-session").setup(opts)
+	config = function(plugin)
+		require("auto-session").setup(plugin.opts)
 		vim.keymap.set(
 			"n",
 			"<leader>sl",
