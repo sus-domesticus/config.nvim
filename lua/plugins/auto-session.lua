@@ -1,3 +1,7 @@
+local function closeNeotree()
+	require("neo-tree.command").execute({ action = "close" })
+end
+
 return {
 	"rmagatti/auto-session",
 	dependencies = { "nvim-telescope/telescope.nvim" },
@@ -13,6 +17,7 @@ return {
 			theme_conf = { border = true },
 			previewer = false,
 		},
+		pre_save_cmds = { closeNeotree },
 	},
 	config = function(opts)
 		require("auto-session").setup(opts)
