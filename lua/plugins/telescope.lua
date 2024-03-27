@@ -22,6 +22,16 @@ return {
 						require("telescope.themes").get_dropdown(),
 					},
 				},
+				defaults = {
+					mappings = {
+						n = {
+							["<c-d>"] = require("telescope.actions").delete_buffer,
+						},
+						i = {
+							["<c-d>"] = require("telescope.actions").delete_buffer,
+						},
+					},
+				},
 			})
 
 			pcall(require("telescope").load_extension, "fzf")
