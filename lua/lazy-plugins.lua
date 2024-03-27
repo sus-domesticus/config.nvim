@@ -3,6 +3,7 @@ require("lazy").setup({
 	"tpope/vim-sleuth",
 	"nvim-treesitter/nvim-treesitter-context",
 	{ "numToStr/Comment.nvim", opts = {} },
+	require("plugins.auto-session"),
 	require("plugins.ufo"),
 	require("plugins.window-picker"),
 	require("plugins.harpoon"),
