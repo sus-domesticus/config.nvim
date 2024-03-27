@@ -4,6 +4,8 @@ require("lazy").setup({
 	"nvim-treesitter/nvim-treesitter-context",
 	{ "numToStr/Comment.nvim", opts = {} },
 	"famiu/bufdelete.nvim",
+
+	require("plugins.toggleterm"),
 	require("plugins.auto-session"),
 	require("plugins.ufo"),
 	require("plugins.window-picker"),

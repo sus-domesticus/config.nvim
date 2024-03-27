@@ -39,4 +39,6 @@ vim.opt.foldlevel = 99
 vim.opt.foldlevelstart = 99
 vim.opt.foldenable = true
 
+vim.opt.hidden = true
+
 -- vim: ts=2 sts=2 sw=2 et
