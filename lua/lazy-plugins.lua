@@ -1,10 +1,10 @@
 require("lazy").setup({
-	"tpope/vim-fugitive",
 	"tpope/vim-sleuth",
 	"nvim-treesitter/nvim-treesitter-context",
 	{ "numToStr/Comment.nvim", opts = {} },
 	"famiu/bufdelete.nvim",
 	{ "jokajak/keyseer.nvim", version = "*", opts = {} },
+	require("plugins.lazygit"),
 	require("plugins.smart-splits"),
 	require("plugins.neovim-session-manager"),
 	require("plugins.grapple"),
