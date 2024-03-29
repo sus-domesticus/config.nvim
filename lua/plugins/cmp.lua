@@ -16,6 +16,7 @@ return {
 					require("luasnip.loaders.from_vscode").lazy_load()
 				end,
 			},
+			"hrsh7th/cmp-nvim-lsp-signature-help",
 			"saadparwaiz1/cmp_luasnip",
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-path",
@@ -56,6 +57,7 @@ return {
 					end, { "i", "s" }),
 				}),
 				sources = {
+					{ name = "nvim_lsp_signature_help" },
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
 					{ name = "path" },
