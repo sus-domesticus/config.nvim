@@ -23,11 +23,6 @@ vim.keymap.set("t", "<c-j>", "<cmd>wincmd j<cr>")
 vim.keymap.set("t", "<c-k>", "<cmd>wincmd k<cr>")
 vim.keymap.set("t", "<c-l>", "<cmd>wincmd l<cr>")
 
-vim.keymap.set({ "n", "t" }, "<C-Up>", "<cmd>resize -2<cr>", { desc = "Resize -2" })
-vim.keymap.set({ "n", "t" }, "<C-Down>", "<cmd>resize +2<cr>", { desc = "Resize +2" })
-vim.keymap.set({ "n", "t" }, "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Vertical resize -2" })
-vim.keymap.set({ "n", "t" }, "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Vertical resize +2" })
-
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
 	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),

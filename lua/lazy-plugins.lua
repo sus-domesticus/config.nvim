@@ -5,6 +5,7 @@ require("lazy").setup({
 	{ "numToStr/Comment.nvim", opts = {} },
 	"famiu/bufdelete.nvim",
 	{ "jokajak/keyseer.nvim", version = "*", opts = {} },
+	require("plugins.smart-splits"),
 	require("plugins.neovim-session-manager"),
 	require("plugins.grapple"),
 	require("plugins.dressing"),
