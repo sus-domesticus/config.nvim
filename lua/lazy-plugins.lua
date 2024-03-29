@@ -4,6 +4,7 @@ require("lazy").setup({
 	{ "numToStr/Comment.nvim", opts = {} },
 	"famiu/bufdelete.nvim",
 	{ "jokajak/keyseer.nvim", version = "*", opts = {} },
+	require("plugins.auto-save"),
 	require("plugins.neoscroll"),
 	require("plugins.lualine"),
 	require("plugins.lazygit"),
