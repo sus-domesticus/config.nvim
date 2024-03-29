@@ -9,9 +9,9 @@ return {
 			bufresize.register()
 			if vim.v.count == 0 then
 				vim.cmd("ToggleTerm")
-				return
+			else
+				vim.cmd('exe v:count . "ToggleTerm"')
 			end
-			vim.cmd('exe v:count . "ToggleTerm"')
 			bufresize.resize()
 		end, { desc = "[T]oggle [t]erminal" })
 	end,
