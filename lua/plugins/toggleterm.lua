@@ -7,6 +7,7 @@ return {
 		vim.keymap.set("n", "<leader>tt", function()
 			local bufresize = require("bufresize")
 			bufresize.register()
+			bufresize.block_register()
 			if vim.v.count == 0 then
 				vim.cmd("ToggleTerm")
 			else
