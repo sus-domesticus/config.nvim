@@ -4,6 +4,7 @@ require("lazy").setup({
 	{ "numToStr/Comment.nvim", opts = {} },
 	"famiu/bufdelete.nvim",
 	{ "jokajak/keyseer.nvim", version = "*", opts = {} },
+  require("plugins.zen-mode"),
   require("plugins.cinnamon"),
 	require("plugins.auto-save"),
 	require("plugins.lualine"),
