@@ -5,7 +5,6 @@ require("lazy").setup({
 	"famiu/bufdelete.nvim",
 	{ "jokajak/keyseer.nvim", version = "*", opts = {} },
 	require("plugins.auto-save"),
-	require("plugins.neoscroll"),
 	require("plugins.lualine"),
 	require("plugins.lazygit"),
 	require("plugins.smart-splits"),
