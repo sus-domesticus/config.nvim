@@ -42,7 +42,7 @@ vim.opt.foldenable = true
 vim.opt.hidden = true
 
 -- windows only
-if vim.fn.has("win32") then
+if package.config:sub(1, 1) == "\\" then
 	-- user powershell
 	vim.api.nvim_exec2(
 		[[
