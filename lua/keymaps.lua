@@ -1,7 +1,5 @@
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 vim.keymap.set({ "n", "v" }, "-", '"_')
-vim.keymap.set("n", "<c-d>", "<c-d>zvzz")
-vim.keymap.set("n", "<c-u>", "<c-u>zvzz")
 
 vim.keymap.set("n", "J", function()
 	local save_cursor = vim.fn.getcurpos()
@@ -17,11 +15,6 @@ vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagn
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
-
-vim.keymap.set("t", "<c-h>", "<cmd>wincmd h<cr>")
-vim.keymap.set("t", "<c-j>", "<cmd>wincmd j<cr>")
-vim.keymap.set("t", "<c-k>", "<cmd>wincmd k<cr>")
-vim.keymap.set("t", "<c-l>", "<cmd>wincmd l<cr>")
 
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
