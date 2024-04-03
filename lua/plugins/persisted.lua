@@ -2,7 +2,7 @@ return {
 	"olimorris/persisted.nvim",
 	lazy = false,
 	init = function()
-		vim.opt.sessionoptions = "buffers,curdir,folds,tabpages,winpos,winsize"
+		vim.opt.sessionoptions = "buffers,curdir,folds,tabpages,winpos,winsize,help"
 	end,
 	config = function()
 		require("persisted").setup({})
