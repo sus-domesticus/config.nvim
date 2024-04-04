@@ -1,4 +1,4 @@
-local function createPythonAdapter(dap)
+local function createCPPAdapter(dap)
 	dap.adapters.gdb = {
 		type = "executable",
 		command = "gdb",
@@ -6,7 +6,7 @@ local function createPythonAdapter(dap)
 	}
 end
 
-local function createPythonConfiguration(dap)
+local function createCPPConfiguration(dap)
 	dap.configurations.cpp = {
 		{
 			type = "gdb",
@@ -28,8 +28,8 @@ end
 local M = {}
 
 function M.setup(dap)
-	createPythonAdapter(dap)
-	createPythonConfiguration(dap)
+	createCPPAdapter(dap)
+	createCPPConfiguration(dap)
 end
 
 return M
