@@ -1,10 +1,9 @@
 require("lazy").setup({
-	"tpope/vim-sleuth",
 	"nvim-treesitter/nvim-treesitter-context",
 	{ "numToStr/Comment.nvim", opts = {} },
 	"famiu/bufdelete.nvim",
 	{ "jokajak/keyseer.nvim", version = "*", opts = {} },
-  require("plugins.ts-autotag"),
+	require("plugins.ts-autotag"),
 	require("plugins.satellite"),
 	require("plugins.persisted"),
 	require("plugins.zen-mode"),
