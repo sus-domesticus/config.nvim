@@ -21,8 +21,10 @@ return {
 	config = function()
 		require("lualine").setup({
 			options = { theme = "auto" },
-			winbar = { lualine_a = { "buffers" }, lualine_z = { getCurrentSession } },
-			inactive_winbar = { lualine_z = { getCurrentSession } },
+			sections = {
+				lualine_c = { "filename" },
+			},
+			tabline = { lualine_z = { getCurrentSession } },
 		})
 	end,
 }
