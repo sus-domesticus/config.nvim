@@ -5,7 +5,6 @@ require("lazy").setup({
 	{ "jokajak/keyseer.nvim", version = "*", opts = {} },
 	require("plugins.ts-autotag"),
 	require("plugins.satellite"),
-	require("plugins.persisted"),
 	require("plugins.zen-mode"),
 	require("plugins.auto-save"),
 	require("plugins.lualine"),

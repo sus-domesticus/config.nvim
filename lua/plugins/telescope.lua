@@ -13,6 +13,7 @@ return {
 				end,
 			},
 			{ "nvim-telescope/telescope-ui-select.nvim" },
+			{ "olimorris/persisted.nvim" },
 			{ "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
 		},
 		config = function()
@@ -20,6 +21,9 @@ return {
 				extensions = {
 					["ui-select"] = {
 						require("telescope.themes").get_dropdown(),
+					},
+					persisted = {
+						layout_config = { width = 0.55, height = 0.55 },
 					},
 				},
 				defaults = {
@@ -36,7 +40,10 @@ return {
 
 			pcall(require("telescope").load_extension, "fzf")
 			pcall(require("telescope").load_extension, "ui-select")
-			pcall(require("telescope").load_extension, "persisted")
+
+			require("persisted").setup()
+			require("telescope").load_extension("persisted")
+			vim.keymap.set("n", "<leader>sl", "<cmd>Telescope persisted<cr>", { desc = "[S]ession [l]ens" })
 
 			local builtin = require("telescope.builtin")
 			vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
