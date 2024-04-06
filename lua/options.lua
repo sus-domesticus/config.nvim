@@ -41,6 +41,8 @@ vim.opt.foldenable = true
 
 vim.opt.hidden = true
 
+vim.opt.guifont = "UbuntuMono_Nerd_Font_Mono:h12"
+
 -- windows only
 if package.config:sub(1, 1) == "\\" then
 	-- user powershell
