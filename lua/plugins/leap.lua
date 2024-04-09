@@ -2,7 +2,7 @@ return {
   "ggandor/leap.nvim",
   dependencies = { "tpope/vim-repeat" },
   config = function()
-    vim.keymap.set({ "n", "v", "o" }, "L", "<Plug>(leap)", { desc = "[L]eap" })
-    vim.keymap.set("n", "<leader>L", "<Plug>(leap-from-window)", { desc = "[L]eap from window" })
+    vim.keymap.set({ "n", "v", "o" }, "<leader><leader>", "<Plug>(leap)", { desc = "Leap" })
+    vim.keymap.set("n", "<C-w><leader>", "<Plug>(leap-from-window)", { desc = "Leap from window" })
   end,
 }

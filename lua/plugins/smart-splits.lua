@@ -38,9 +38,9 @@ return {
       { desc = "Resize right" }
     )
 
-    vim.keymap.set("n", "<leader><leader>h", require("smart-splits").swap_buf_left, { desc = "Move buf left" })
-    vim.keymap.set("n", "<leader><leader>j", require("smart-splits").swap_buf_down, { desc = "Move buf down" })
-    vim.keymap.set("n", "<leader><leader>k", require("smart-splits").swap_buf_up, { desc = "Move buf up" })
-    vim.keymap.set("n", "<leader><leader>l", require("smart-splits").swap_buf_right, { desc = "Move buf right" })
+    vim.keymap.set("n", "<leader>bh", require("smart-splits").swap_buf_left, { desc = "Move buf left" })
+    vim.keymap.set("n", "<leader>bj", require("smart-splits").swap_buf_down, { desc = "Move buf down" })
+    vim.keymap.set("n", "<leader>bk", require("smart-splits").swap_buf_up, { desc = "Move buf up" })
+    vim.keymap.set("n", "<leader>bl", require("smart-splits").swap_buf_right, { desc = "Move buf right" })
   end,
 }
