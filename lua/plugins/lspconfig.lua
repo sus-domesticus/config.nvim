@@ -88,6 +88,16 @@ return {
           function(server_name)
             local server = servers[server_name] or {}
             server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
+
+            if server_name == "cssls" then
+              server.settings = vim.tbl_deep_extend("force", server.settings or {}, {
+                css = {
+                  lint = {
+                    unknownAtRules = "ignore",
+                  },
+                },
+              })
+            end
             require("lspconfig")[server_name].setup(server)
           end,
         },
