@@ -20,6 +20,8 @@ return {
       vim.opt.sessionoptions = "buffers,curdir,folds,tabpages,winpos,winsize"
     end,
     config = function()
+      require("telescope").load_extension("persisted")
+
       require("telescope").setup({
         extensions = {
           ["ui-select"] = {
@@ -48,11 +50,13 @@ return {
         require("persisted").setup({
           allowed_dirs = {
             "~/Documents/src",
+            "~/Appdata/Local/nvim",
           },
         })
+      else
+        require("persisted").setup()
       end
 
-      require("telescope").load_extension("persisted")
       vim.keymap.set("n", "<leader>sl", "<cmd>Telescope persisted<cr>", { desc = "[S]ession [l]ens" })
 
       local builtin = require("telescope.builtin")
