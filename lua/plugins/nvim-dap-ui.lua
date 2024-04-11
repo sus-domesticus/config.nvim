@@ -41,7 +41,7 @@ return {
           dap.step_out()
         end, "step out")
 
-        map("<leader>b", function()
+        map("<leader>br", function()
           dap.toggle_breakpoint()
         end, "toggle breakpoint")
 
