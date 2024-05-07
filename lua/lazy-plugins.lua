@@ -10,6 +10,7 @@ require("lazy").setup({
   },
   { "numToStr/Comment.nvim", opts = {} },
   "famiu/bufdelete.nvim",
+  require("plugins.git-blame"),
   require("plugins.ts-autotag"),
   require("plugins.satellite"),
   require("plugins.zen-mode"),
