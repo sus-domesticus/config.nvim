@@ -28,7 +28,12 @@ return {
 
         return { timeout_ms = 200, lsp_fallback = true }, on_format
       end,
-
+      formatters = {
+        shfmt = {
+          command = "shfmt",
+          args = { "-i", "4" }, -- indent 4 spaces
+        },
+      },
       format_after_save = function(bufnr)
         if not slow_format_filetypes[vim.bo[bufnr].filetype] then
           return
@@ -43,6 +48,7 @@ return {
         ts = { "biome" },
         tex = { "latexindent" },
         bib = { "bibtex-tidy" },
+        sh = { "shfmt" },
       },
     },
   },
