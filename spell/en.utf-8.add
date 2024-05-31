@@ -43,3 +43,7 @@ Syntaxebene
 Xamarin
 TODO
 metadata
+useExhaustiveDependencies
+useEffect
+biome
+triggerRender
