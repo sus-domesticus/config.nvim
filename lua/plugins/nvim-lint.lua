@@ -7,6 +7,7 @@ return {
       cpp = { "cpplint" },
       ts = { "ts-standard" },
       sh = { "shellcheck" },
+      cmake = { "cmakelint" },
     }
     vim.api.nvim_create_autocmd({ "BufWritePost" }, {
       group = vim.api.nvim_create_augroup("lint-buf-write-post", { clear = true }),
