@@ -1,9 +1,7 @@
-local slow_format_filetypes = {}
 return {
   {
     "stevearc/conform.nvim",
-    event = { "BufWritePre" },
-    cmd = { "ConformInfo" },
+    lazy = false,
     keys = {
       {
         "<leader>f",
@@ -11,44 +9,23 @@ return {
           require("conform").format({ async = true, lsp_fallback = true })
         end,
         mode = "",
-        desc = "Format buffer",
+        desc = "[F]ormat buffer",
       },
     },
     opts = {
       notify_on_error = false,
       format_on_save = function(bufnr)
-        if slow_format_filetypes[vim.bo[bufnr].filetype] then
-          return
-        end
-        local function on_format(err)
-          if err and err:match("timeout$") then
-            slow_format_filetypes[vim.bo[bufnr].filetype] = true
-          end
-        end
-
-        return { timeout_ms = 200, lsp_fallback = true }, on_format
-      end,
-      formatters = {
-        shfmt = {
-          command = "shfmt",
-          args = { "-i", "4" }, -- indent 4 spaces
-        },
-      },
-      format_after_save = function(bufnr)
-        if not slow_format_filetypes[vim.bo[bufnr].filetype] then
-          return
-        end
-        return { lsp_fallback = true }
+        -- Disable "format_on_save lsp_fallback" for languages that don't
+        -- have a well standardized coding style. You can add additional
+        -- languages here or re-enable it for the disabled ones.
+        local disable_filetypes = { c = true, cpp = true }
+        return {
+          timeout_ms = 500,
+          lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
+        }
       end,
       formatters_by_ft = {
         lua = { "stylua" },
-        python = { "ruff_format" },
-        c = { "clang-format" },
-        cpp = { "clang-format" },
-        ts = { "biome" },
-        tex = { "latexindent" },
-        bib = { "bibtex-tidy" },
-        sh = { "shfmt" },
       },
     },
   },

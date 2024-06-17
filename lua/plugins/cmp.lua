@@ -11,17 +11,18 @@ return {
           end
           return "make install_jsregexp"
         end)(),
-        dependencies = { "rafamadriz/friendly-snippets" },
-        config = function()
-          require("luasnip.loaders.from_vscode").lazy_load()
-        end,
+        dependencies = {
+          {
+            "rafamadriz/friendly-snippets",
+            config = function()
+              require("luasnip.loaders.from_vscode").lazy_load()
+            end,
+          },
+        },
       },
-      "hrsh7th/cmp-nvim-lsp-signature-help",
       "saadparwaiz1/cmp_luasnip",
       "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-path",
-      "SergioRibera/cmp-dotenv",
-      "petertriho/cmp-git",
+      "https://codeberg.org/FelipeLema/cmp-async-path",
     },
     config = function()
       local cmp = require("cmp")
@@ -34,16 +35,13 @@ return {
             luasnip.lsp_expand(args.body)
           end,
         },
-        completion = { completeopt = "menu,menuone,noinsert" },
-        ghost_test = true,
+        completion = { completeopt = "menu,menuone,preview,fuzzy,noinsert" },
 
         mapping = cmp.mapping.preset.insert({
           ["<C-n>"] = cmp.mapping.select_next_item(),
           ["<C-p>"] = cmp.mapping.select_prev_item(),
-
           ["<C-b>"] = cmp.mapping.scroll_docs(-4),
           ["<C-f>"] = cmp.mapping.scroll_docs(4),
-
           ["<C-y>"] = cmp.mapping.confirm({ select = true }),
           ["<C-Space>"] = cmp.mapping.complete({}),
           ["<C-l>"] = cmp.mapping(function()
@@ -58,15 +56,11 @@ return {
           end, { "i", "s" }),
         }),
         sources = {
-          { name = "nvim_lsp_signature_help" },
           { name = "nvim_lsp" },
           { name = "luasnip" },
-          { name = "path" },
-          { name = "dotenv" },
-          { name = "git" },
+          { name = "async_path" },
         },
       })
-      require("cmp_git").setup()
     end,
   },
 }
