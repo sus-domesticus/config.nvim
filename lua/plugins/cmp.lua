@@ -22,6 +22,7 @@ return {
       },
       "saadparwaiz1/cmp_luasnip",
       "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-nvim-lsp-signature-help",
       "https://codeberg.org/FelipeLema/cmp-async-path",
     },
     config = function()
@@ -56,6 +57,7 @@ return {
           end, { "i", "s" }),
         }),
         sources = {
+          { name = "nvim_lsp_signature_help" },
           { name = "nvim_lsp" },
           { name = "luasnip" },
           { name = "async_path" },
