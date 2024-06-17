@@ -55,6 +55,15 @@ vim.opt.sessionoptions = "blank,buffers,curdir,folds,resize,tabpages,winpos,wins
 vim.opt.hlsearch = true
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
+-- HACK: powershell hack for windows
+if vim.uv.os_uname().sysname == "Windows" then
+  vim.cmd([[let &shell = executable('pwsh') ? 'pwsh' : 'powershell'
+    let &shellcmdflag = '-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new();$PSDefaultParameterValues[''Out-File:Encoding'']=''utf8'';Remove-Alias -Force -ErrorAction SilentlyContinue tee;'
+    let &shellredir = '2>&1 | %%{ "$_" } | Out-File %s; exit $LastExitCode'
+    let &shellpipe  = '2>&1 | %%{ "$_" } | tee %s; exit $LastExitCode'
+    set shellquote= shellxquote=]])
+end
+
 -- Diagnostic keymaps
 vim.keymap.set("n", "[d", function()
   vim.diagnostic.jump({ count = -1 })
