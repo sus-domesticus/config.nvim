@@ -1,12 +1,11 @@
 return {
-  -- amongst your other plugins
   {
     "akinsho/toggleterm.nvim",
     version = "*",
     config = function()
       require("toggleterm").setup({ start_in_insert = false })
 
-      vim.keymap.set("n", "<Leader>tt", function()
+      vim.keymap.set("n", "<Leader>ut", function()
         if vim.v.count == 0 then
           vim.cmd("ToggleTermToggleAll")
         else
